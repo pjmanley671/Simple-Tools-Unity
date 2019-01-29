@@ -1,0 +1,14 @@
+Files associated with Sounds
+
+ObjectSounds.cs
+Sound.cs
+
+ObjectSounds.cs is a ScriptableObject. To create an instance simply right click in the project window
+then go to Create and it should be up towards the top of the next list.
+
+Create -> Sounds
+
+Another way is to click Assets in the toolbar and then click Create and it should still be up towards
+the top.
+
+Assets -> Create -> Sounds
