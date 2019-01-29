@@ -1,0 +1,17 @@
+Files associated with AI-Pathing
+
+PathPoint.cs
+Path.cs
+PathGUI.cs
+
+The PathGUI.cs is an editor script and thus must be placed into an Editor folder.
+
+Path.cs is a ScriptableObject. To create an instance simply right click in the project window
+then go to Create and it should be up towards the top of the next list.
+
+Create -> AI - Path
+
+Another way is to click Assets in the toolbar and then click Create and it should still be up towards
+the top.
+
+Assets -> Create -> AI - Path
