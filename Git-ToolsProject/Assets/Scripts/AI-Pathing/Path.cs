@@ -10,13 +10,17 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "AI - Path")]
 public class Path : ScriptableObject
 {
-    public List<PathPoint> pathPoints;
-    private int positionInArray = 0;
+    public List<PathPoint> pathPoints; // The PathPoints that this scriptableObject contains.
+    private int positionInArray = 0; // The position in the List that is currently active for the runtime representation of the current target point.
 
     #region Setters & Getters
     public void SetNextPathLocation()
-    { positionInArray = (positionInArray <= pathPoints.Capacity) ? positionInArray + 1 : 0; }
+    { // Sets the next path location. Goes to Start by default if it reaches past the number of set points.
+        positionInArray = (positionInArray <= pathPoints.Capacity) ? positionInArray + 1 : 0;
+    }
     public Vector3 GetPathToLocation()
-    { return pathPoints[positionInArray].location; }
+    { // Returns the PathPoint location.
+        return pathPoints[positionInArray].location;
+    }
     #endregion
 }
