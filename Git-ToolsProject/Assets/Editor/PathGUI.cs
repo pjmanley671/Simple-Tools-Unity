@@ -107,13 +107,15 @@ public class PathGUI : Editor
     {
         if (_path.pathPoints.Capacity > 0)
         {
-            foreach (PathPoint lPoint in _path.pathPoints)
+            for (int i = 0; i < _path.pathPoints.Capacity; i++)
             { // Makes each point show in the scene view and you can edit them using the position handles.
-                Handles.color = _colors[(int)lPoint.beviourAtPoint];
-                lPoint.location = Handles.PositionHandle(lPoint.location, Quaternion.identity);
-                Handles.SphereHandleCap(1, lPoint.location, Quaternion.identity, .5f, EventType.Repaint);
-            }
+                Handles.color = _colors[(int)_path.pathPoints[i].beviourAtPoint];
 
+                if(toggleGroup[i]) // makes it so that only if the point detail is visible in the inspector then it is adjustable.
+                    _path.pathPoints[i].location = Handles.PositionHandle(_path.pathPoints[i].location, Quaternion.identity);
+
+                Handles.SphereHandleCap(1, _path.pathPoints[i].location, Quaternion.identity, .5f, EventType.Repaint); // shows where the points are.
+            }
             Handles.color = Color.white; // sets the color to something default.
             for (int i = 0; i + 1 < _path.pathPoints.Capacity; i++)
             { // Shoes the connection (linearly) between points.

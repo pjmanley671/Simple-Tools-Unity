@@ -18,6 +18,10 @@ public class Path : ScriptableObject
     { // Sets the next path location. Goes to Start by default if it reaches past the number of set points.
         positionInArray = (positionInArray <= pathPoints.Capacity) ? positionInArray + 1 : 0;
     }
+    public void SetNextPathLocation(int n)
+    { // Lets the developer manually set which location they want to go to next. Allows for different sequencing of path lists with out changing structure of them overall.
+        positionInArray = (n < pathPoints.Capacity) ? n : positionInArray;
+    }
     public Vector3 GetPathToLocation()
     { // Returns the PathPoint location.
         return pathPoints[positionInArray].location;
