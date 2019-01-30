@@ -12,25 +12,25 @@ public class PathPoint
 {
     #region ManipulatableObjectData
     public enum PointBehavior : byte
-    {
+    {// the expected behavior of the AI once it has reached the point location.
         Start = 0,
         Idle = 1,
         PassThrough = 2,
         Interact = 3,
         End = 4
     }
-    public PointBehavior beviourAtPoint;
-    public Vector3 location;
+    public PointBehavior beviourAtPoint; // this specific type of point behaviour.
+    public Vector3 location; // the location that this point is at.
     #endregion
 
     #region Constructors
     public PathPoint()
-    {
+    { // Default Constructor
         beviourAtPoint = PointBehavior.Start;
         location = Vector3.zero;
     }
     public PathPoint(Vector3 _location)
-    {
+    { // Passed Location Constructor
         beviourAtPoint = PointBehavior.Start;
         location = _location;
     }
