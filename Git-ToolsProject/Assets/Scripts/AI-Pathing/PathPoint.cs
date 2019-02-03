@@ -29,10 +29,20 @@ public class PathPoint
         beviourAtPoint = PointBehavior.Start;
         location = Vector3.zero;
     }
-    public PathPoint(Vector3 _location)
+    public PathPoint(Vector3 pLocation)
     { // Passed Location Constructor
         beviourAtPoint = PointBehavior.Start;
-        location = _location;
+        location = pLocation;
+    }
+    public PathPoint(Vector3 pLocation, PointBehavior pbehavior)
+    { // Full regular cosntructor.
+        location = pLocation;
+        beviourAtPoint = pbehavior;
+    }
+    public PathPoint(PathPoint pOriginal)
+    { // Copy Constructor.
+        location = pOriginal.location;
+        beviourAtPoint = pOriginal.beviourAtPoint;
     }
     #endregion
 }

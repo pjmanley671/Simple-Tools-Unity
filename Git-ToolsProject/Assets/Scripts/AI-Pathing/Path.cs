@@ -26,5 +26,21 @@ public class Path : ScriptableObject
     { // Returns the PathPoint location.
         return pathPoints[positionInArray].location;
     }
+    public PathPoint.PointBehavior GetPointBehavior()
+    {
+        return pathPoints[positionInArray].beviourAtPoint;
+    }
+    public PathPoint.PointBehavior GetPointBehavior(int n)
+    {
+        return pathPoints[n].beviourAtPoint;
+    }
+    public PathPoint GetPoint(int n)
+    {
+        return pathPoints[n];
+    }
+    public PathPoint GetPoint()
+    {
+        return pathPoints[positionInArray];
+    }
     #endregion
 }
