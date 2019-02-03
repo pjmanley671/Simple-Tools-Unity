@@ -17,10 +17,12 @@ public class PathGUI : Editor
     private void OnEnable()
     { // Makes sure no necessary data types are empty and if they are then make a new one of it.
         _path = (Path)target;
-        if (_path == null) _path = new Path();
 
         if (_path.pathPoints == null)
-            _path.pathPoints = new List<PathPoint>();
+        {
+            //_path.pathPoints = new List<PathPoint>();
+            Debug.Log(_path.pathPoints);
+        }
 
         SceneView.onSceneGUIDelegate += OnSceneGUI; // Adds the OnSceneGUI to the delegate to allow rendering in editor.
 
