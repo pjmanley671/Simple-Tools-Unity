@@ -11,13 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ea810245a3d6f4daf03d93358584d6, type: 3}
   m_Name: SceneSounds
   m_EditorClassIdentifier: 
-  _objectSounds:
-  - name: Main
+  objectSounds:
+  - name: 
     clip: {fileID: 0}
-    volume: 1
-    pitch: 1
-    defaultVolume: 1
-    volumeScale: 1
-    loop: 1
-    oneShot: 0
+    volume: 0
+    pitch: 0
+    defaultVolume: 0
+    volumeScale: 0
+    type: 0
     source: {fileID: 0}

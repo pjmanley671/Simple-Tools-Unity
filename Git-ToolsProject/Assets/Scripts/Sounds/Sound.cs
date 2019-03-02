@@ -1,10 +1,15 @@
-﻿using UnityEngine.Audio;
-using UnityEngine;
+﻿using UnityEngine;
 
 /* 
  * Original Author: Paul J. Manley
  * Modified By:
  */
+public enum SoundPlayType
+{
+    Default,
+    OneShot,
+    Loop
+}
 
 [System.Serializable]
 public class Sound
@@ -21,7 +26,7 @@ public class Sound
     [Range(0f, 1f)]
     public float defaultVolume, volumeScale;
 
-    public bool loop, oneShot;
+    public SoundPlayType type;
 
     [HideInInspector]
     public AudioSource source;

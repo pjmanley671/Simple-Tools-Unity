@@ -1,5 +1,4 @@
-﻿using UnityEngine.Audio;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 /* 
@@ -10,35 +9,41 @@ using System.Collections.Generic;
 [CreateAssetMenu(menuName = "Sounds")]
 public class ObjectSounds : ScriptableObject
 {
-    public List<Sound> _objectSounds;
-    KeyNotFoundException _soundException = new KeyNotFoundException("<color=blue>Sound not found: ");
+    public List<Sound> objectSounds;
+    static readonly KeyNotFoundException _soundException = new KeyNotFoundException("<color=blue>Sound not found: ");
 
     public void InitSounds(GameObject gameObject)
     {
-        for (int i = 0; i < _objectSounds.Capacity; i++)
+        for (int i = 0; i < objectSounds.Capacity; i++)
         {
-            if (_objectSounds[i].source == null)
+            if (objectSounds[i].source == null)
             {
-                _objectSounds[i].source = gameObject.AddComponent<AudioSource>();
-                _objectSounds[i].source.clip = _objectSounds[i].clip;
-                _objectSounds[i].source.volume = _objectSounds[i].defaultVolume;
-                _objectSounds[i].source.pitch = _objectSounds[i].pitch;
-                _objectSounds[i].source.loop = _objectSounds[i].loop;
+                objectSounds[i].source = gameObject.AddComponent<AudioSource>();
+                objectSounds[i].source.clip = objectSounds[i].clip;
+                objectSounds[i].source.volume = objectSounds[i].defaultVolume;
+                objectSounds[i].source.pitch = objectSounds[i].pitch;
+                if (objectSounds[i].type == SoundPlayType.Loop)
+                    objectSounds[i].source.loop = true;
+                else
+                    objectSounds[i].source.loop = false;
             }
         }
     }
 
     public void InitSounds(GameObject gameObject, AudioSource _aSource)
     {
-        for (int i = 0; i < _objectSounds.Capacity; i++)
+        for (int i = 0; i < objectSounds.Capacity; i++)
         {
-            if (_objectSounds[i].source == null)
+            if (objectSounds[i].source == null)
             {
-                _objectSounds[i].source = _aSource;
-                _objectSounds[i].source.clip = _objectSounds[i].clip;
-                _objectSounds[i].source.volume = _objectSounds[i].defaultVolume;
-                _objectSounds[i].source.pitch = _objectSounds[i].pitch;
-                _objectSounds[i].source.loop = _objectSounds[i].loop;
+                objectSounds[i].source = _aSource;
+                objectSounds[i].source.clip = objectSounds[i].clip;
+                objectSounds[i].source.volume = objectSounds[i].defaultVolume;
+                objectSounds[i].source.pitch = objectSounds[i].pitch;
+                if (objectSounds[i].type == SoundPlayType.Loop)
+                    objectSounds[i].source.loop = true;
+                else
+                    objectSounds[i].source.loop = false;
             }
         }
     }
@@ -48,10 +53,10 @@ public class ObjectSounds : ScriptableObject
         Sound _s = null;
         try
         {
-            for (int i = 0; i < _objectSounds.Capacity; i++)
+            for (int i = 0; i < objectSounds.Capacity; i++)
             {
-                if (_objectSounds[i].name == p_name)
-                    _s = _objectSounds[i];
+                if (objectSounds[i].name == p_name)
+                    _s = objectSounds[i];
             }
 
             if(_s == null) throw _soundException;
@@ -72,7 +77,7 @@ public class ObjectSounds : ScriptableObject
 
         if (!s.source.isPlaying)
         {
-            if (s.oneShot)
+            if (s.type == SoundPlayType.OneShot)
                 s.source.PlayOneShot(s.clip);
             else
                 s.source.Play();
