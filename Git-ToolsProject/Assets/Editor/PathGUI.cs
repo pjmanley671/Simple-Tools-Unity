@@ -49,7 +49,7 @@ public class PathGUI : Editor
             GUILayout.BeginHorizontal();
             l_pb = (PathPoint.PointBehavior)i;
             GUILayout.Label(l_pb.ToString());
-            _colors[i] = (CustomColor)EditorGUILayout.ObjectField(_colors[i], typeof(CustomColor), GUILayout.Width(Screen.width / 2));
+            _colors[i] = (CustomColor)EditorGUILayout.ObjectField(_colors[i], typeof(CustomColor), false, GUILayout.Width(Screen.width / 2));
             //_colors[i] = EditorGUILayout.ColorField(_colors[i], GUILayout.Width(Screen.width / 2));
             GUILayout.EndHorizontal();
 
@@ -93,7 +93,17 @@ public class PathGUI : Editor
 
         for (int i = 0; i < _path.pathPoints.Capacity; i++)
         { // Displayes the point information via the toggle group.
-            _toggleGroup[i] = EditorGUILayout.Foldout(_toggleGroup[i], "Point: " + i + "  -  " + _path.pathPoints[i].beviourAtPoint.ToString());
+            GUILayout.BeginHorizontal();
+            _toggleGroup[i] = EditorGUILayout.Foldout(_toggleGroup[i], "Point: " + i + "  -  " + _path.pathPoints[i].beviourAtPoint.ToString(), true);
+            if (GUILayout.Button("Remove point!", GUILayout.Width(Screen.width / 3)))
+            {
+                _toggleGroup.RemoveAt(i);
+                _path.pathPoints.RemoveAt(i);
+                _toggleGroup.TrimExcess();
+                _path.pathPoints.TrimExcess();
+                return;
+            }
+            GUILayout.EndHorizontal();
 
             if (_toggleGroup[i])
             {
