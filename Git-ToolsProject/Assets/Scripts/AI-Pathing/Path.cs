@@ -11,24 +11,24 @@ using UnityEngine;
 public class Path : ScriptableObject
 {
     public List<PathPoint> pathPoints; // The PathPoints that this scriptableObject contains.
-    private int positionInArray = 0; // The position in the List that is currently active for the runtime representation of the current target point.
+    private int _positionInArray = 0; // The position in the List that is currently active for the runtime representation of the current target point.
 
     #region Setters & Getters
     public void SetNextPathLocation()
     { // Sets the next path location. Goes to Start by default if it reaches past the number of set points.
-        positionInArray = (positionInArray <= pathPoints.Capacity) ? positionInArray + 1 : 0;
+        _positionInArray = (_positionInArray <= pathPoints.Capacity) ? _positionInArray + 1 : 0;
     }
     public void SetNextPathLocation(int n)
     { // Lets the developer manually set which location they want to go to next. Allows for different sequencing of path lists with out changing structure of them overall.
-        positionInArray = (n < pathPoints.Capacity) ? n : positionInArray;
+        _positionInArray = (n < pathPoints.Capacity) ? n : _positionInArray;
     }
     public Vector3 GetPathToLocation()
     { // Returns the PathPoint location.
-        return pathPoints[positionInArray].location;
+        return pathPoints[_positionInArray].location;
     }
     public PathPoint.PointBehavior GetPointBehavior()
     {
-        return pathPoints[positionInArray].beviourAtPoint;
+        return pathPoints[_positionInArray].beviourAtPoint;
     }
     public PathPoint.PointBehavior GetPointBehavior(int n)
     {
@@ -40,7 +40,7 @@ public class Path : ScriptableObject
     }
     public PathPoint GetPoint()
     {
-        return pathPoints[positionInArray];
+        return pathPoints[_positionInArray];
     }
     #endregion
 }

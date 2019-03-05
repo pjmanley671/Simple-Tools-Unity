@@ -9,16 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 375e238d840d20e489c888d5ef431e2c, type: 3}
-  m_Name: First
+  m_Name: Second
   m_EditorClassIdentifier: 
   pathPoints:
   - beviourAtPoint: 0
     location: {x: 0, y: 0, z: 0}
-  - beviourAtPoint: 1
-    location: {x: 0, y: 0, z: -0.80111814}
-  - beviourAtPoint: 2
-    location: {x: 0, y: 0, z: -1.5789006}
-  - beviourAtPoint: 3
-    location: {x: 0, y: 0, z: -2.3714113}
   - beviourAtPoint: 4
-    location: {x: 0, y: 0, z: -3.12715}
+    location: {x: 0, y: 0, z: -0.6419991}
