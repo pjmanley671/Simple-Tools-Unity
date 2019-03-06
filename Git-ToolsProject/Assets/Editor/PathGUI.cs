@@ -32,6 +32,33 @@ public class PathGUI : Editor
             _toggleGroup.Add(false);
             _toggleGroup.TrimExcess(); // clears any junk data automatically added on <List>.Add()
         }
+
+        //Debug.Log(Resources.FindObjectsOfTypeAll(typeof(CustomColor)));
+        //Debug.Log(Resources.FindObjectsOfTypeAll(typeof(CustomColor)).Length);
+        Object[] l_colors = Resources.FindObjectsOfTypeAll(typeof(CustomColor));
+        foreach (CustomColor c in l_colors)
+        {
+            switch (c.name)
+            {
+                case "Start":
+                    _colors[0] = c;
+                    break;
+                case "End":
+                    _colors[_colors.Length - 1] = c;
+                    break;
+                case "Idle":
+                    _colors[1] = c;
+                    break;
+                case "Interact":
+                    _colors[3] = c;
+                    break;
+                case "PassThrough":
+                    _colors[2] = c;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     private void OnDisable()
