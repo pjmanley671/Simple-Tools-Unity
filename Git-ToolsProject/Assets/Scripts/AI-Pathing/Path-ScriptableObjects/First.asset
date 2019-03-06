@@ -17,8 +17,8 @@ MonoBehaviour:
   - beviourAtPoint: 1
     location: {x: 0, y: 0, z: -0.80111814}
   - beviourAtPoint: 2
-    location: {x: 0, y: 0, z: -1.5789006}
+    location: {x: 0, y: 0, z: -1.6489562}
   - beviourAtPoint: 3
-    location: {x: 0, y: 0, z: -2.3714113}
+    location: {x: 0, y: 0, z: -2.4801767}
   - beviourAtPoint: 4
-    location: {x: 0, y: 0, z: -3.12715}
+    location: {x: 0, y: 0, z: -3.386976}
