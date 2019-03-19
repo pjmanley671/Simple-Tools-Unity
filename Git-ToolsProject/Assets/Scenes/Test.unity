@@ -410,8 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aff013a37b3a5f74fbd9053abb29e4bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerEvents:
-  - {fileID: 11400000, guid: baeb6f549eed7a24aa9c11cb63fa5aef, type: 2}
+  triggerEvents: []
 --- !u!1 &2112457077
 GameObject:
   m_ObjectHideFlags: 0

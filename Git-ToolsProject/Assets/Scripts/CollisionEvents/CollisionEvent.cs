@@ -3,6 +3,7 @@
 [CreateAssetMenu()]
 public class CollisionEvent : ScriptableObject
 {
+    // Sets the base calls for all CollsionEvents.
     public virtual void CustomEnter(Collision collision)
     { Debug.Log("CustomEnter - Collision"); }
 
