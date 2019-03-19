@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 922345193}
   m_Layer: 0
   m_Name: RigidTester
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 1984641123}
   - component: {fileID: 1984641125}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -410,8 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aff013a37b3a5f74fbd9053abb29e4bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerEvents:
-  - {fileID: 11400000, guid: baeb6f549eed7a24aa9c11cb63fa5aef, type: 2}
+  triggerEvents: []
 --- !u!1 &2112457077
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,4 +511,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collisions:
-  - {fileID: 11400000, guid: 2e0ee223d3a0bb34584a06ce5fc18ec7, type: 2}
+  - {fileID: 11400000, guid: 4556198a24c7eb648b62f3d8ee165b2a, type: 2}
