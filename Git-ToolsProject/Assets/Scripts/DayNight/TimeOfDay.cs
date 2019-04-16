@@ -5,11 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class TimeOfDay
 {
-    [SerializeField]
-    private Vector3 _timeAngle;
-    [SerializeField]
-    private Color _colorAtTime;
+    
+    public Vector3 _timeAngle;
+    
+    public Color _colorAtTime;
 
-    [SerializeField]
-    private float _colorIntensity;
+    public float _colorIntensity;
+
 } // End of TimeOfDay class

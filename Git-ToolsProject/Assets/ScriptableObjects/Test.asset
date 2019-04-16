@@ -11,4 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58e91430f96d8bf44971e301cb05917a, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  timeOfDays: []
+  timeOfDays:
+  - _timeAngle: {x: 15, y: 15, z: 15}
+    _colorAtTime: {r: 0, g: 0.9811321, b: 0.85818976, a: 1}
+    _colorIntensity: 6
+  timeBetweenHours: 0.01

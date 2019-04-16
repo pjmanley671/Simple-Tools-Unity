@@ -16,6 +16,9 @@ public class DayNightGUI : Editor
     private void OnEnable()
     {
         _hours = (Hours)target;
+        EditorUtility.SetDirty(_hours);
+
+        
         SceneView.onSceneGUIDelegate += OnSceneGUI;
         if (_object == null)
         {
@@ -46,11 +49,42 @@ public class DayNightGUI : Editor
         EditorGUILayout.LabelField("Length of time in minutes: ");
         _hours.timeBetweenHours = EditorGUILayout.FloatField(_hours.timeBetweenHours);
         GUILayout.EndHorizontal();
+
+        if(_hours.timeOfDays.Capacity <= 0)
+        {
+            _hours.timeOfDays.Add(new TimeOfDay());
+            _hours.timeOfDays.TrimExcess();
+        }
+
+        GUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Light Color: ");
+        _hours.timeOfDays[0]._colorAtTime = EditorGUILayout.ColorField(_hours.timeOfDays[0]._colorAtTime);
+        GUILayout.EndHorizontal();
+
+        GUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Light Intensity: ");
+        _hours.timeOfDays[0]._colorIntensity = EditorGUILayout.FloatField(_hours.timeOfDays[0]._colorIntensity);
+        GUILayout.EndHorizontal();
+
+        GUILayout.BeginHorizontal();
+        _hours.timeOfDays[0]._timeAngle = EditorGUILayout.Vector3Field("angleOfSun", _hours.timeOfDays[0]._timeAngle);
+        GUILayout.EndHorizontal();
+
+
         GUILayout.EndVertical();
+
+
+
+
     }
 
     private void OnSceneGUI(SceneView sceneView)
     {
+        if (_light != null)
+        {
+            _light.color = _hours.timeOfDays[0]._colorAtTime;
+            _object.transform.rotation = Quaternion.Euler(_hours.timeOfDays[0]._timeAngle);
+        }
         if (!simulating)
         {
 
