@@ -19,6 +19,16 @@ public class DayNightGUI : Editor
     {
         _hours = (Hours)target;
         EditorUtility.SetDirty(_hours);
+
+        if (_hours.timeOfDays == null)
+        {
+            _hours.timeOfDays = new List<TimeOfDay>
+            {
+                new TimeOfDay()
+            };
+
+            _hours.timeOfDays.TrimExcess();
+        }
         simulating = false;
 
         SceneView.onSceneGUIDelegate += OnSceneGUI;
@@ -159,11 +169,14 @@ public class DayNightGUI : Editor
                 if (simulatedIndex >= _hours.timeOfDays.Capacity)
                     simulatedIndex = 0;
             }
+
             if (_light != null)
             { 
                 _light.color = _hours.timeOfDays[simulatedIndex]._colorAtTime;
                 _object.transform.rotation = Quaternion.Euler(_hours.timeOfDays[simulatedIndex]._timeAngle);
             }
         }
+
+        sceneView.Repaint();
     } // End of OnSceneGUI(1 SceneView)
 }

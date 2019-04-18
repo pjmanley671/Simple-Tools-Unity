@@ -4,7 +4,7 @@ using UnityEngine;
 public class PhysicsTrigger : TriggerEvent
 {
     [SerializeField]
-    private ForcemMode _mode;
+    private ForceMode _mode;
     
     [SerializeField]
     private Vector3 _direction;
@@ -13,16 +13,16 @@ public class PhysicsTrigger : TriggerEvent
     private bool _enter, _stay, _exit;
 
     public override void CustomAwake(GameObject pObject) 
-    { base.CustomAwake();
-        if(pObject.GetComponent<RigidBody>() == null)
-            pObject.AddComponent<RigidBody>(); 
+    {
+        base.CustomAwake(pObject);
     }
 
     public override void CustomEnter(Collider other)
     { 
         if(_enter)
         {
-            base.CustomEnter();
+            base.CustomEnter(other);
+            other.attachedRigidbody.AddForce(_direction, _mode);
         }
     }
 
@@ -30,7 +30,8 @@ public class PhysicsTrigger : TriggerEvent
     { 
         if(_stay)
         {
-            base.CustomStay();
+            base.CustomStay(other);
+            other.attachedRigidbody.AddForce(_direction, _mode);
         }
     }
 
@@ -38,7 +39,8 @@ public class PhysicsTrigger : TriggerEvent
     { 
         if(_exit)
         {
-            base.CustomExit();
+            base.CustomExit(other);
+            other.attachedRigidbody.AddForce(_direction, _mode);
         }
     }
 }
