@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using System;
 
 [CustomEditor(typeof(Hours))]
 public class DayNightGUI : Editor
@@ -50,6 +49,7 @@ public class DayNightGUI : Editor
             for(int i = 0; i < _hours.timeOfDays.Capacity; i++)
             {
                 visibleHours.Add(false);
+                visibleHours.TrimExcess();
             }
         }
 
@@ -65,6 +65,7 @@ public class DayNightGUI : Editor
         {
             visibleHours.Clear();
             visibleHours.TrimExcess();
+            visibleHours = null;
         }
         /***************************************************/
     } // End of OnDisable()
@@ -147,12 +148,12 @@ public class DayNightGUI : Editor
     {
         if (!simulating)
         {
-            if (_light != null)
+            if (_light != null && _hours.timeOfDays != null)
             {
                 int pausedIndex = 0;
                 for(int i = 0; i < _hours.timeOfDays.Capacity; i++)
                 {
-                    if (visibleHours[i]) pausedIndex = i;
+                    if (visibleHours[i] && visibleHours != null) pausedIndex = i;
                 }
 
                 _light.color = _hours.timeOfDays[pausedIndex]._colorAtTime;
