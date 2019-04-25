@@ -31,6 +31,7 @@ public class DayNightGUI : Editor
         simulating = false;
 
         SceneView.onSceneGUIDelegate += OnSceneGUI;
+#if UNITY_EDITOR
         if (_object == null)
         {
             _object = new GameObject();
@@ -40,9 +41,11 @@ public class DayNightGUI : Editor
         {
             _light = _object.AddComponent<Light>();
             _light.type = LightType.Directional;
+            _light.shadows = LightShadows.Hard;
+            _light.shadowResolution = UnityEngine.Rendering.LightShadowResolution.Low;
             _light.SetLightDirty();
         } // End of if(_object light is null)
-
+#endif
         if(visibleHours == null)
         {
             visibleHours = new List<bool>();
@@ -59,8 +62,10 @@ public class DayNightGUI : Editor
     {
         /* Cleans up all in scene references and behaivors */
         SceneView.onSceneGUIDelegate += OnSceneGUI;
+#if UNITY_EDITOR
         DestroyImmediate(_light);
         DestroyImmediate(_object);
+#endif
         if (visibleHours != null)
         {
             visibleHours.Clear();
@@ -146,6 +151,7 @@ public class DayNightGUI : Editor
 
     private void OnSceneGUI(SceneView sceneView)
     {
+#if UNITY_EDITOR
         if (!simulating)
         {
             if (_light != null && _hours.timeOfDays != null)
@@ -179,5 +185,6 @@ public class DayNightGUI : Editor
         }
 
         sceneView.Repaint();
+#endif
     } // End of OnSceneGUI(1 SceneView)
 }

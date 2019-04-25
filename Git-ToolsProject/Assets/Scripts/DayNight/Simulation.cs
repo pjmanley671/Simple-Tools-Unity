@@ -18,7 +18,7 @@ public class Simulation : MonoBehaviour {
     void Start () {
 
         _light.color = hours.timeOfDays[index]._colorAtTime;
-
+        _light.gameObject.transform.rotation = Quaternion.Euler(hours.timeOfDays[index]._timeAngle);
 
 	}
 	
@@ -38,8 +38,15 @@ public class Simulation : MonoBehaviour {
 
         currentStepAmount += Time.deltaTime;
 
-        _light.color = (hours.timeOfDays[(index+1 >= hours.timeOfDays.Capacity)? 0 : index + 1]._colorAtTime - hours.timeOfDays[index]._colorAtTime) *
+        _light.color = (hours.timeOfDays[(index+1 >= hours.timeOfDays.Capacity)? 0 : index + 1]._colorAtTime - 
+            hours.timeOfDays[index]._colorAtTime) *
             (currentStepAmount / hours.timeBetweenHours) +
             hours.timeOfDays[index]._colorAtTime;
-	}
+
+        _light.gameObject.transform.rotation = Quaternion.Euler(
+            (hours.timeOfDays[(index + 1 >= hours.timeOfDays.Capacity) ? 0 : index + 1]._timeAngle -
+            hours.timeOfDays[index]._timeAngle) *
+            (currentStepAmount / hours.timeBetweenHours) +
+            hours.timeOfDays[index]._timeAngle);
+    }
 }

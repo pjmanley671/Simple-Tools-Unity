@@ -12,13 +12,25 @@ MonoBehaviour:
   m_Name: Presenting
   m_EditorClassIdentifier: 
   timeOfDays:
-  - _timeAngle: {x: 41.46, y: 10.57, z: 16.7}
+  - _timeAngle: {x: 10, y: 67.84, z: 0}
     _colorAtTime: {r: 1, g: 0.08962262, b: 0.08962262, a: 1}
-    _colorIntensity: 0.3
-  - _timeAngle: {x: 33.57, y: -48.2, z: 93.3}
+    _colorIntensity: 1
+  - _timeAngle: {x: 20, y: 74.8, z: 0}
     _colorAtTime: {r: 1, g: 0.6621639, b: 0.2688679, a: 0.8862745}
     _colorIntensity: 1
-  - _timeAngle: {x: 0, y: 0, z: 0}
-    _colorAtTime: {r: 1, g: 0.96429956, b: 0.495283, a: 0.7058824}
-    _colorIntensity: 0
+  - _timeAngle: {x: 30, y: 87.79, z: 0}
+    _colorAtTime: {r: 1, g: 0.96429956, b: 0.495283, a: 0.7921569}
+    _colorIntensity: 1
+  - _timeAngle: {x: 20, y: 97.46, z: 0}
+    _colorAtTime: {r: 0.9150943, g: 0.44459772, b: 0.44459772, a: 1}
+    _colorIntensity: 1
+  - _timeAngle: {x: 10, y: 73.28, z: 0}
+    _colorAtTime: {r: 0.24377, g: 0.27767935, b: 0.6226415, a: 1}
+    _colorIntensity: 1
+  - _timeAngle: {x: 20, y: 81.21, z: 0}
+    _colorAtTime: {r: 0.15619439, g: 0.28536633, b: 0.8490566, a: 0.75686276}
+    _colorIntensity: 1
+  - _timeAngle: {x: 10, y: 102.66, z: 0}
+    _colorAtTime: {r: 0.12677999, g: 0.20224705, b: 0.7264151, a: 1}
+    _colorIntensity: 1
   timeBetweenHours: 5
