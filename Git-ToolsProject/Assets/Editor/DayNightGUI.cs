@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using System;
 
 [CustomEditor(typeof(Hours))]
 public class DayNightGUI : Editor
@@ -19,9 +18,20 @@ public class DayNightGUI : Editor
     {
         _hours = (Hours)target;
         EditorUtility.SetDirty(_hours);
+
+        if (_hours.timeOfDays == null)
+        {
+            _hours.timeOfDays = new List<TimeOfDay>
+            {
+                new TimeOfDay()
+            };
+
+            _hours.timeOfDays.TrimExcess();
+        }
         simulating = false;
 
         SceneView.onSceneGUIDelegate += OnSceneGUI;
+#if UNITY_EDITOR
         if (_object == null)
         {
             _object = new GameObject();
@@ -31,15 +41,18 @@ public class DayNightGUI : Editor
         {
             _light = _object.AddComponent<Light>();
             _light.type = LightType.Directional;
+            _light.shadows = LightShadows.Hard;
+            _light.shadowResolution = UnityEngine.Rendering.LightShadowResolution.Low;
             _light.SetLightDirty();
         } // End of if(_object light is null)
-
+#endif
         if(visibleHours == null)
         {
             visibleHours = new List<bool>();
             for(int i = 0; i < _hours.timeOfDays.Capacity; i++)
             {
                 visibleHours.Add(false);
+                visibleHours.TrimExcess();
             }
         }
 
@@ -49,12 +62,15 @@ public class DayNightGUI : Editor
     {
         /* Cleans up all in scene references and behaivors */
         SceneView.onSceneGUIDelegate += OnSceneGUI;
+#if UNITY_EDITOR
         DestroyImmediate(_light);
         DestroyImmediate(_object);
+#endif
         if (visibleHours != null)
         {
             visibleHours.Clear();
             visibleHours.TrimExcess();
+            visibleHours = null;
         }
         /***************************************************/
     } // End of OnDisable()
@@ -135,14 +151,15 @@ public class DayNightGUI : Editor
 
     private void OnSceneGUI(SceneView sceneView)
     {
+#if UNITY_EDITOR
         if (!simulating)
         {
-            if (_light != null)
+            if (_light != null && _hours.timeOfDays != null)
             {
                 int pausedIndex = 0;
                 for(int i = 0; i < _hours.timeOfDays.Capacity; i++)
                 {
-                    if (visibleHours[i]) pausedIndex = i;
+                    if (visibleHours[i] && visibleHours != null) pausedIndex = i;
                 }
 
                 _light.color = _hours.timeOfDays[pausedIndex]._colorAtTime;
@@ -159,11 +176,15 @@ public class DayNightGUI : Editor
                 if (simulatedIndex >= _hours.timeOfDays.Capacity)
                     simulatedIndex = 0;
             }
+
             if (_light != null)
             { 
                 _light.color = _hours.timeOfDays[simulatedIndex]._colorAtTime;
                 _object.transform.rotation = Quaternion.Euler(_hours.timeOfDays[simulatedIndex]._timeAngle);
             }
         }
+
+        sceneView.Repaint();
+#endif
     } // End of OnSceneGUI(1 SceneView)
 }
