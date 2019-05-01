@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f18d575297f6ea8438c2b311f21ca804, type: 3}
   m_Name: PhysicsTrigger
   m_EditorClassIdentifier: 
-  _mode: 1
-  _direction: {x: 0, y: 10, z: 0}
+  _mode: 2
+  _direction: {x: -90, y: 30, z: -50}
   _enter: 1
-  _stay: 0
-  _exit: 0
+  _stay: 1
+  _exit: 1
