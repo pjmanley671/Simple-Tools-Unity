@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f18d575297f6ea8438c2b311f21ca804, type: 3}
-  m_Name: Forward
+  m_Name: Glide
   m_EditorClassIdentifier: 
-  _mode: 0
-  _direction: {x: 20, y: 30, z: 10}
-  _enter: 1
+  _mode: 1
+  _direction: {x: 1, y: 0, z: -0.5}
+  _enter: 0
   _stay: 1
-  _exit: 1
+  _exit: 0

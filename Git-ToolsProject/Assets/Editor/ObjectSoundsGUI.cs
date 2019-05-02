@@ -7,12 +7,26 @@ using UnityEditor;
 public class ObjectSoundsGUI : Editor
 {
     ObjectSounds _sounds;
+    static GameObject _object;
+    static AudioSource _source;
 
     private void OnEnable()
     {
         _sounds = (ObjectSounds)target;
+
+        if (_object == null)
+        {
+            _object = new GameObject();
+            _source = _object.AddComponent<AudioSource>();
+        }
     }
 
+    private void OnDisable()
+    {
+        _source.Stop();
+        DestroyImmediate(_source);
+        DestroyImmediate(_object);
+    }
     public override void OnInspectorGUI()
     {
         foreach (Sound s in _sounds.objectSounds)
@@ -34,9 +48,11 @@ public class ObjectSoundsGUI : Editor
 
             GUILayout.Label("Volume Scale: ");
             s.volumeScale = EditorGUILayout.Slider(s.volumeScale, 0f, 1f);
+            _source.volume = s.volume * s.volumeScale;
 
             GUILayout.Label("Pitch: ");
             s.pitch = EditorGUILayout.Slider(s.pitch, .1f, 2f);
+            _source.pitch = s.pitch;
 
             GUILayout.Label("Play Type: ");
             s.type = (SoundPlayType)EditorGUILayout.EnumPopup(s.type);
@@ -45,12 +61,18 @@ public class ObjectSoundsGUI : Editor
 
             if (GUILayout.Button("Play!"))
             {
-                Debug.Log("Play! No implementation yet!");
+                if (_sounds.objectSounds[0].type == SoundPlayType.Loop)
+                {
+                    _source.clip = _sounds.objectSounds[0].clip;
+                    _source.volume = _sounds.objectSounds[0].volume * _sounds.objectSounds[0].volumeScale;
+                    _source.pitch = _sounds.objectSounds[0].pitch;
+                    _source.Play();
+                }
             }
 
             if (GUILayout.Button("Stop!"))
             {
-                Debug.Log("Stop! No implementation yet!");
+                _source.Stop();
             }
         }
 
