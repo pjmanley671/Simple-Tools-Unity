@@ -33,4 +33,4 @@ MonoBehaviour:
   - _timeAngle: {x: 10, y: 102.66, z: 0}
     _colorAtTime: {r: 0.990566, g: 0.3317462, b: 0.9309065, a: 1}
     _colorIntensity: 1
-  timeBetweenHours: 40
+  timeBetweenHours: 5
