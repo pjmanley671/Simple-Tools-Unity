@@ -13,6 +13,7 @@ public class ObjectSoundsGUI : Editor
     private void OnEnable()
     {
         _sounds = (ObjectSounds)target;
+        EditorUtility.SetDirty(_sounds);
 
         if (_object == null)
         {

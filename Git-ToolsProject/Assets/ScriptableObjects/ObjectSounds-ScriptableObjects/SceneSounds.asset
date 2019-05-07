@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Name: SceneSounds
   m_EditorClassIdentifier: 
   objectSounds:
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+  - name: MyShinyTeethAndMe
+    clip: {fileID: 8300000, guid: 074e7a73466c183459eb5eb94edb102d, type: 3}
+    volume: 1
+    pitch: 1
     defaultVolume: 0
-    volumeScale: 0
-    type: 0
+    volumeScale: 1
+    type: 2
     source: {fileID: 0}

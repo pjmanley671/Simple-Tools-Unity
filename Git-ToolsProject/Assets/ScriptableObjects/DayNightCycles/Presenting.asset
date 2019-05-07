@@ -18,7 +18,7 @@ MonoBehaviour:
   - _timeAngle: {x: 20, y: 74.8, z: 0}
     _colorAtTime: {r: 1, g: 0.6621639, b: 0.2688679, a: 0.8862745}
     _colorIntensity: 1
-  - _timeAngle: {x: 30, y: 87.79, z: 0}
+  - _timeAngle: {x: 30, y: 88.16, z: 0}
     _colorAtTime: {r: 1, g: 0.96429956, b: 0.495283, a: 0.7921569}
     _colorIntensity: 1
   - _timeAngle: {x: 20, y: 97.46, z: 0}
@@ -33,4 +33,4 @@ MonoBehaviour:
   - _timeAngle: {x: 10, y: 102.66, z: 0}
     _colorAtTime: {r: 0.990566, g: 0.3317462, b: 0.9309065, a: 1}
     _colorIntensity: 1
-  timeBetweenHours: 5
+  timeBetweenHours: 2
